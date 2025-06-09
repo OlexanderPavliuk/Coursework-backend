@@ -1,0 +1,51 @@
+@startuml
+title UML Diagram – CheckQuest Models
+
+class User {
+    +id: int
+    +username: string
+    +email: string
+    +password_hash: string
+}
+
+class Task {
+    +id: int
+    +title: string
+    +type: string
+    +priority: string
+    +deadline: datetime
+    +completed: bool
+    +user_id: int
+}
+
+class Health {
+    +health: int
+    +last_health_check: datetime
+    +user_id: int
+}
+
+class Store {
+    +handlePurchase(userId: int, itemId: int): array
+    -fetchItem(itemId: int): array
+    -fetchCharacter(userId: int): array
+    -deductGold(userId: int, amount: int): void
+    -recordPurchase(userId: int, itemId: int): void
+    -applyItemEffect(...)
+}
+
+class StoreItem {
+    +id: int
+    +name: string
+    +type: string
+    +effect_value: int
+    +price: int
+}
+
+User "1" --> "*" Task : creates
+User "1" --> "1" Health : has
+User "1" --> "*" StoreItem : purchases
+Store --> StoreItem : uses
+Store --> Health : modifies
+Store --> Task : updates
+
+@enduml

@@ -1,0 +1,120 @@
+body{font-family:'Inter',sans-serif;}
+h1,h2,h3,h4{font-family:'Nunito',sans-serif;}
+.card-glass{
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg rounded-xl transition-all duration-300;
+}
+.card-glass:hover {
+    @apply border-white/30 shadow-xl transform scale-[1.02];
+}
+.btn-purple{
+    @apply bg-gradient-to-br from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500
+    text-white font-semibold py-1.5 px-4 rounded shadow transition active:scale-95;
+}
+.task-card {
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:border-l-purple-500;
+}
+@keyframes float-in{0%{opacity:0;transform:translateY(12px) scale(.96);}100%{opacity:1;transform:translateY(0) scale(1);}}
+.animate-float{animation:float-in .45s cubic-bezier(.26,.7,.4,1);}
+.navbar-link{
+    @apply relative transition-all duration-300;
+}
+.navbar-link::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-2px;
+    width:0;
+    height:2px;
+    background:#f0abff;
+    transition:.3s;
+}
+.navbar-link:hover::after{width:100%;}
+
+
+.progress-bar {
+    width: var(--target-width, 0%);
+    transition: width 0.5s ease-out;
+}
+
+
+/* Improved scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* === Themes === */
+.theme-soft-neon {
+    background: linear-gradient(to bottom, #1e1b4b, #4c1d95, #6b21a8);
+    color: white;
+
+}
+.theme-sunset-glow {
+    background: linear-gradient(to bottom, #f97316, #ea580c, #b91c1c);
+    color: white;
+}
+.theme-cyber-minimalist {
+    background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+    color: #e5e5e5;
+}
+.theme-forest-productivity {
+    background: linear-gradient(to bottom, #14532d, #166534, #15803d);
+    color: white;
+}
+#loading-screen {
+    transition: opacity 0.6s ease-out;
+}
+/* Task Type Selection Styles */
+.task-type-option input:checked + div {
+    @apply border-purple-500 bg-purple-50 text-purple-700;
+    transform: translateY(-2px);
+}
+
+/* Priority Selection Styles */
+.priority-option input:checked + div {
+    @apply ring-4;
+}
+.priority-option input[value="easy"]:checked + div {
+    @apply ring-green-200 scale-110;
+}
+.priority-option input[value="medium"]:checked + div {
+    @apply ring-yellow-200 scale-110;
+}
+.priority-option input[value="hard"]:checked + div {
+    @apply ring-red-200 scale-110;
+}
+
+/* Add tooltip styles */
+.priority-option div::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+
+.priority-option div:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-8px);
+}
+
